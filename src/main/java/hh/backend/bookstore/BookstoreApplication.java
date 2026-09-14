@@ -11,12 +11,6 @@ import hh.backend.bookstore.domain.BookRepository;
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private final BookRepository bookRepository;
-
-	BookstoreApplication(BookRepository bookRepository) {
-		this.bookRepository = bookRepository;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
