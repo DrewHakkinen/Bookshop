@@ -14,10 +14,10 @@ public class Book {
     @Id // Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // db uusi id arvo generoituu uudelle tietoriville
+    private Long isbnId;
     private String title;
     private String author;
     private int publicationYear;
-    private Long isbnId;
     private double price;
 
     // konstruktorit
