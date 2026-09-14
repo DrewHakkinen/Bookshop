@@ -19,11 +19,11 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository bookRepository) {
 		return (args) -> {
-			Book book1 = new Book("Keitto kirja", "Kape Aihinen", 2016, 24.50);
+			Book book1 = new Book("Keitto kirja", "Kape Aihinen", 2016, 845649364456L, 24.50);
 			bookRepository.save(book1); // SQL INSERT
-			Book book2 = new Book("Aleksei Navalnyin elämänkerta", "Kalle Kniivilä", 2024, 16.90);
+			Book book2 = new Book("Aleksei Navalnyin elämänkerta", "Kalle Kniivilä", 2024, 3289649234L, 16.90);
 			bookRepository.save(book2); // SQL INSERT
-			Book book3 = new Book("Uusi Autokirja", "O. Pohjanen ja A. I. Walli", 1950, 18.00);
+			Book book3 = new Book("Uusi Autokirja", "O. Pohjanen ja A. I. Walli", 1950, 849653479582L, 18.00);
 			bookRepository.save(book3); // SQL INSERT
 		};
 	}

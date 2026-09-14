@@ -14,33 +14,41 @@ public class Book {
     @Id // Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // db uusi id arvo generoituu uudelle tietoriville
-    private Long isbnId;
+    private Long bookId;
     private String title;
     private String author;
     private int publicationYear;
+    private Long isbn;
     private double price;
 
     // konstruktorit
     public Book(String title, String author, int publicationYear,
-            double price) {
+            Long isbn, double price) {
         super();
+        this.bookId = null;
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
-        this.isbnId = null;
+        this.isbn = isbn;
         this.price = price;
     }
 
     public Book() {
         super();
+        this.bookId = null;
         this.title = null;
         this.author = null;
         this.publicationYear = 0;
-        this.isbnId = null;
+        this.isbn = null;
         this.price = 0.00;
     }
 
     // getterit
+
+    public Long getBookId() {
+        return bookId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -53,8 +61,8 @@ public class Book {
         return publicationYear;
     }
 
-    public Long getIsbnId() {
-        return isbnId;
+    public Long getIsbn() {
+        return isbn;
     }
 
     public double getPrice() {
@@ -62,6 +70,11 @@ public class Book {
     }
 
     // setterit
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -74,8 +87,8 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public void setIsbnId(Long isbnId) {
-        this.isbnId = isbnId;
+    public void setIsbnId(Long isbn) {
+        this.isbn = isbn;
     }
 
     public void setPrice(double price) {
@@ -85,8 +98,7 @@ public class Book {
     // toString
     @Override
     public String toString() {
-        return "Book [title=" + title + ", author=" + author +
-                ", publicationYear=" + publicationYear + ", isbnId=" + isbnId
-                + ", price=" + price + "]";
+        return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", publicationYear="
+                + publicationYear + ", isbn=" + isbn + ", price=" + price + "]";
     }
 }

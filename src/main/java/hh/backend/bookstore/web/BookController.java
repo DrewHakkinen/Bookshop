@@ -16,14 +16,20 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    // kirjalistaus
     @GetMapping("/index")
     public String getBooks(Model model) {
 
-        // haetaan autot tietokannasta findAll -> SQL SELECT
+        return "index"; // index.html
+    }
+
+    // kirjalistaus
+    @GetMapping("/booklist")
+    public String showBooks(Model model) {
+
+        // haetaan kirjat tietokannasta findAll -> SQL SELECT
         model.addAttribute("books", bookRepository.findAll());
 
-        return "index"; // index.html
+        return "booklist"; // booklist.html
     }
 
 }
