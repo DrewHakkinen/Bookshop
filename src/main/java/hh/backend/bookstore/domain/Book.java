@@ -1,29 +1,42 @@
 package hh.backend.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table
 public class Book {
 
     // attribuutit
+    @Id // Primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // db uusi id arvo generoituu uudelle tietoriville
     private String title;
     private String author;
-    private Long publicationYear;
-    private Long isbn;
+    private int publicationYear;
+    private Long isbnId;
     private double price;
 
     // konstruktorit
-    public Book(String title, String author, Long publicationYear,
-            Long isbn, double price) {
+    public Book(String title, String author, int publicationYear,
+            double price) {
+        super();
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
-        this.isbn = isbn;
+        this.isbnId = null;
         this.price = price;
     }
 
     public Book() {
+        super();
         this.title = null;
         this.author = null;
-        this.publicationYear = null;
-        this.isbn = null;
+        this.publicationYear = 0;
+        this.isbnId = null;
         this.price = 0.00;
     }
 
@@ -36,12 +49,12 @@ public class Book {
         return author;
     }
 
-    public Long getPublicationYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
 
-    public Long getIsbn() {
-        return isbn;
+    public Long getIsbnId() {
+        return isbnId;
     }
 
     public double getPrice() {
@@ -57,12 +70,12 @@ public class Book {
         this.author = author;
     }
 
-    public void setPublicationYear(Long publicationYear) {
+    public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
+    public void setIsbnId(Long isbnId) {
+        this.isbnId = isbnId;
     }
 
     public void setPrice(double price) {
@@ -73,7 +86,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book [title=" + title + ", author=" + author +
-                ", publicationYear=" + publicationYear + ", isbn=" + isbn
+                ", publicationYear=" + publicationYear + ", isbnId=" + isbnId
                 + ", price=" + price + "]";
     }
 }
