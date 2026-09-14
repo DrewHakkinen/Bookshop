@@ -87,7 +87,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public void setIsbnId(Long isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
