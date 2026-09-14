@@ -3,7 +3,13 @@ package hh.backend.bookstore.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
 
 @Controller
@@ -23,7 +29,7 @@ public class BookController {
     }
 
     // kirjalistaus
-    @GetMapping("/booklist")
+    @GetMapping("/booklisting")
     public String showBooks(Model model) {
 
         // haetaan kirjat tietokannasta findAll -> SQL SELECT
@@ -32,4 +38,27 @@ public class BookController {
         return "booklist"; // booklist.html
     }
 
+    // tyhjän kirjalomakkeen muodostaminen
+    @GetMapping(value = "/newbook")
+    public String getNewCarForm(Model model) {
+        model.addAttribute("book", new Book()); // "tyhjä" kirja-olio
+        return "addbook"; // addbook.html
+    }
+
+    // kirjalomakeella syötettyjen tietojen vastaanotto ja tallennus
+    @PostMapping("/savebook")
+    public String saveBook(@ModelAttribute Book book, Model model) {
+        // ei osata vielä tallentaa tietokantaan lomakkeelta syötetyn auton tietoja
+        bookRepository.save(book); // SQL INSERT
+        return "redirect:/booklisting"; // endpoint
+    }
+
+    // Kirjan poisto
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+
+        bookRepository.deleteById(bookId); // SQL DELETE
+        return "redirect:/booklisting"; // endpoint
+
+    }
 }
