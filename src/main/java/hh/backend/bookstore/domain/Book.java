@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,11 +17,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // db uusi id arvo generoituu uudelle tietoriville
     private Long bookId;
+
     private String title;
     private String author;
     private int publicationYear;
     private Long isbn;
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
 
     // konstruktorit
     public Book(String title, String author, int publicationYear,
