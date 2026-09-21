@@ -40,7 +40,7 @@ public class BookController {
 
     // tyhjän kirjalomakkeen muodostaminen
     @GetMapping(value = "/newbook")
-    public String getNewCarForm(Model model) {
+    public String getNewBookForm(Model model) {
         model.addAttribute("book", new Book()); // "tyhjä" kirja-olio
         return "addbook"; // addbook.html
     }

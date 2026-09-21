@@ -1,13 +1,13 @@
 package hh.backend.bookstore.domain;
 
-import java.util.List;
+//import java.util.List;
 
-import jakarta.persistence.CascadeType;
+//import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -19,8 +19,8 @@ public class Category {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private List<Book> books;
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    // private List<Book> books;
 
     // konstruktorit
     public Category(String name) {
