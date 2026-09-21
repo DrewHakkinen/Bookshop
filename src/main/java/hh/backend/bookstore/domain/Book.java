@@ -4,8 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-//import jakarta.persistence.JoinColumn;
-//import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,13 +24,13 @@ public class Book {
     private Long isbn;
     private double price;
 
-    // @ManyToOne
-    // @JoinColumn(name = "categoryid")
-    // private Category category;
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
 
     // konstruktorit
     public Book(String title, String author, int publicationYear,
-            Long isbn, double price) {
+            Long isbn, double price, Category category) {
         super();
         this.bookId = null;
         this.title = title;
@@ -38,6 +38,7 @@ public class Book {
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
     public Book() {
@@ -48,6 +49,7 @@ public class Book {
         this.publicationYear = 0;
         this.isbn = null;
         this.price = 0.00;
+        this.category = null;
     }
 
     // getterit
@@ -76,6 +78,10 @@ public class Book {
         return price;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     // setterit
 
     public void setBookId(Long bookId) {
@@ -102,10 +108,15 @@ public class Book {
         this.price = price;
     }
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     // toString
     @Override
     public String toString() {
         return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", publicationYear="
-                + publicationYear + ", isbn=" + isbn + ", price=" + price + "]";
+                + publicationYear + ", isbn=" + isbn + ", price=" + price + ", category=" + category + "]";
     }
+
 }

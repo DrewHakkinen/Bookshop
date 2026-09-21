@@ -19,26 +19,22 @@ public class BookstoreApplication {
 
 	// Luodaan testidataa tietokantaan
 	@Bean
-	public CommandLineRunner demo(BookRepository bookRepository) {
+	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
-			Book book1 = new Book("Keitto kirja", "Kape Aihinen", 2016, 845649364456L, 24.50);
+			categoryRepository.save(new Category("Tietokirjallisuus"));
+			categoryRepository.save(new Category("Elämänkerta"));
+			categoryRepository.save(new Category("Kauhukirjallisuus"));
+
+			Book book1 = new Book("Keitto kirja", "Kape Aihinen", 2016, 845649364456L, 24.50,
+					categoryRepository.findByName("Tietokirjallisuus").get(0));
 			bookRepository.save(book1); // SQL INSERT
-			Book book2 = new Book("Aleksei Navalnyin elämänkerta", "Kalle Kniivilä", 2024, 3289649234L, 16.90);
+			Book book2 = new Book("Aleksei Navalnyin elämänkerta", "Kalle Kniivilä", 2024, 3289649234L, 16.90,
+					categoryRepository.findByName("Elämänkerta").get(0));
 			bookRepository.save(book2); // SQL INSERT
-			Book book3 = new Book("Uusi Autokirja", "O. Pohjanen ja A. I. Walli", 1950, 849653479582L, 18.00);
+			Book book3 = new Book("Uusi Autokirja", "O. Pohjanen ja A. I. Walli", 1950, 849653479582L, 18.00,
+					categoryRepository.findByName("Tietokirjallisuus").get(0));
 			bookRepository.save(book3); // SQL INSERT
 		};
 	}
 
-	@Bean
-	public CommandLineRunner democategory(CategoryRepository categoryRepository) {
-		return (args) -> {
-			Category category1 = new Category("Tietokirjallisuus");
-			categoryRepository.save(category1);
-			Category category2 = new Category("Kaunokirjallisuus");
-			categoryRepository.save(category2);
-			Category category3 = new Category("Kauhukirjallisuus");
-			categoryRepository.save(category3);
-		};
-	}
 }
