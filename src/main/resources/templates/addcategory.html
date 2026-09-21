@@ -9,7 +9,10 @@
 
 <body>
     <h1>New Category</h1>
-
+    <form method="post" action="#" th:action="@{/savecategory}" th:object=${book}>
+        <p>Category: <input type="text" th:field="${category.name}" /></p>
+        <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+    </form>
 </body>
 
 </html>
