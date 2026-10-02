@@ -1,10 +1,12 @@
 package hh.backend.bookstore;
 
+import hh.backend.bookstore.domain.AppUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.backend.bookstore.domain.AppUser;
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
 import hh.backend.bookstore.domain.Category;
@@ -12,6 +14,12 @@ import hh.backend.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
+
+	private final AppUserRepository appUserRepository;
+
+	BookstoreApplication(AppUserRepository appUserRepository) {
+		this.appUserRepository = appUserRepository;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -34,6 +42,14 @@ public class BookstoreApplication {
 			Book book3 = new Book("Uusi Autokirja", "O. Pohjanen ja A. I. Walli", 1950, 849653479582L, 18.00,
 					categoryRepository.findByName("Tietokirjallisuus").get(0));
 			bookRepository.save(book3); // SQL INSERT
+
+			// Creating users
+			AppUser user1 = new AppUser("user", "$2a$10$YKVMRh7wXbdeBU9m9ARRXuLkr6rvRZy0CiAgohB2c3GKp2EAXguju",
+					"USER");
+			AppUser user2 = new AppUser("admin", "$2a$10$Y76qLlF.tFpAELo5Z4yrr.BglJuReIutXH.JtIWnxr46Vv8dOkgMm",
+					"ADMIN");
+			appUserRepository.save(user1);
+			appUserRepository.save(user2);
 		};
 	}
 

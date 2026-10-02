@@ -60,7 +60,7 @@ public class BookController {
 
     // Kirjan poisto
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 
         bookRepository.deleteById(bookId); // SQL DELETE
