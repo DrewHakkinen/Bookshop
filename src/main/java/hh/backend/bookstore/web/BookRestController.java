@@ -28,7 +28,7 @@ public class BookRestController {
     // RESTful service getting all books
     // Muunnetaan JSON-kirjalistaksi
     // lähetetään web-selaimelle vastauksena
-    @GetMapping("/books")
+    @GetMapping("/getbooks")
     public @ResponseBody List<Book> findAllBooksRest() {
         return (List<Book>) bookRepository.findAll();
     }
