@@ -10,6 +10,7 @@
 <body>
     <h1>Edit Book</h1>
     <form method="post" action="#" th:action="@{/savebook}" th:object=${book}>
+        <input type="hidden" th:field="*{bookId}" />
         <p>Title: <input type="text" th:field="*{title}" /></p>
         <p>Author: <input type="text" th:field="*{author}" /></p>
         <p>Publication Year: <input type="text" th:field="*{publicationYear}" /></p>
@@ -20,7 +21,6 @@
             <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}">
             </option>
         </select>
-        <input type="hidden" th:field="*{bookId}" />
         <input type="submit" value="Submit" />
     </form>
 
