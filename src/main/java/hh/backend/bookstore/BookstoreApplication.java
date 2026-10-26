@@ -33,7 +33,7 @@ public class BookstoreApplication {
 			categoryRepository.save(new Category("Elämänkerta"));
 			categoryRepository.save(new Category("Kauhukirjallisuus"));
 
-			Book book1 = new Book("Keitto kirja", "Kape Aihinen", 2016, 845649364456L, 24.50,
+			Book book1 = new Book("Keittokirja", "Kape Aihinen", 2016, 845649364456L, 24.50,
 					categoryRepository.findByName("Tietokirjallisuus").get(0));
 			bookRepository.save(book1); // SQL INSERT
 			Book book2 = new Book("Aleksei Navalnyin elämänkerta", "Kalle Kniivilä", 2024, 3289649234L, 16.90,

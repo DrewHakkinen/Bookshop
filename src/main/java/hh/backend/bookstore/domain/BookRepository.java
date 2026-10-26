@@ -7,4 +7,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
     // CRUDRepositorypalveluista periytyy save, findAll, findId ja deleteById
     List<Book> findByTitle(String title);
+
+    List<Book> findByAuthor(String author);
 }
