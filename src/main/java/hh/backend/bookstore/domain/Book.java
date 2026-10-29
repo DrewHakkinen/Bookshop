@@ -28,7 +28,7 @@ public class Book {
 
     @ManyToOne
     // @JsonIgnoreProperties
-    @JsonIgnoreProperties("books")
+    @JsonIgnoreProperties("getbooks")
     @JoinColumn(name = "categoryid")
     private Category category;
 
@@ -36,7 +36,6 @@ public class Book {
     public Book(String title, String author, int publicationYear,
             Long isbn, double price, Category category) {
         super();
-        this.bookId = null;
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -46,14 +45,7 @@ public class Book {
     }
 
     public Book() {
-        super();
-        this.bookId = null;
-        this.title = null;
-        this.author = null;
-        this.publicationYear = 0;
-        this.isbn = null;
-        this.price = 0.00;
-        this.category = null;
+
     }
 
     // getterit
